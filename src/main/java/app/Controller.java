@@ -1,5 +1,7 @@
 package app;
 
+import app.stat.GaussCumulativeDistribution;
+import app.stat.GaussDistribution;
 import app.stat.WeibullCumulativeDistribution;
 import javafx.fxml.FXML;
 import javafx.scene.chart.BarChart;
@@ -71,9 +73,10 @@ public class Controller {
 //        CauchyDistribution cauchyDistribution = new CauchyDistribution(alpha, beta);    //k=5, beta=1
 //        double[] data = cauchyDistribution.sample(100_000);
 
-
-        app.stat.WeibullDistribution dist = new app.stat.WeibullDistribution(lambda, rho);
-        WeibullCumulativeDistribution f_wei = new WeibullCumulativeDistribution(dist, -0.1, 2, 100000);
+//        app.stat.WeibullDistribution dist = new app.stat.WeibullDistribution(lambda, rho);
+//        WeibullCumulativeDistribution f_wei = new WeibullCumulativeDistribution(dist, -5, 5, 100000);
+        GaussDistribution dist = new GaussDistribution(lambda, rho);
+        GaussCumulativeDistribution f_wei = new GaussCumulativeDistribution(dist, -5, 5, 100000);
 
         int n = 100_000;
         double[] data = new double[n];
