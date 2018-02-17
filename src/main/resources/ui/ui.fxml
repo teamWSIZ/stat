@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<VBox xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="app.Controller">
+    <MenuBar fx:id="menuBar">
+        <menus>
+            <Menu text="File">
+                <items>
+                    <MenuItem text="New" />
+                    <MenuItem text="Open" />
+                    <SeparatorMenuItem />
+                    <MenuItem text="Exit" />
+                </items>
+            </Menu>
+            <Menu fx:id="toolsMenu" text="Tools">
+                <items>
+                    <MenuItem text="Tool 1" />
+                    <Menu text="Unspecified Menu">
+                        <items>
+                            <MenuItem text="Action 1" />
+                        </items>
+                    </Menu>
+                </items>
+            </Menu>
+        </menus>
+    </MenuBar>
+
+    <HBox fx:id="fff">
+
+    </HBox>
+
+    <HBox>
+        <Button onAction="#doSomething"> Click me!</Button>
+        <Button onAction="#dodaj"> Dodaj</Button>
+        <TextField promptText="a" fx:id="a">5</TextField>
+        <TextField promptText="b" fx:id="b">1</TextField>
+        <Button onAction="#printWeibullHisto"> Print Weibull</Button>
+    </HBox>
+
+</VBox>
