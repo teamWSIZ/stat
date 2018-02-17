@@ -35,8 +35,8 @@
     <HBox>
         <Button onAction="#doSomething"> Click me!</Button>
         <Button onAction="#dodaj"> Dodaj</Button>
-        <TextField promptText="a" fx:id="a">5</TextField>
-        <TextField promptText="b" fx:id="b">1</TextField>
+        <TextField promptText="lambda" fx:id="a"></TextField>
+        <TextField promptText="k" fx:id="b"></TextField>
         <Button onAction="#printWeibullHisto"> Print Weibull</Button>
     </HBox>
 

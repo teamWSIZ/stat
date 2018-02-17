@@ -1,5 +1,6 @@
 package app;
 
+import app.stat.WeibullCumulativeDistribution;
 import javafx.fxml.FXML;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
@@ -7,10 +8,8 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
-import org.apache.commons.math3.distribution.BetaDistribution;
-import org.apache.commons.math3.distribution.CauchyDistribution;
-import org.apache.commons.math3.distribution.WeibullDistribution;
 
+import java.security.SecureRandom;
 import java.util.Random;
 
 public class Controller {
@@ -65,12 +64,26 @@ public class Controller {
     }
 
     public void printWeibullHisto() {
-        double alpha = Double.valueOf(a.getText());
-        double beta = Double.valueOf(b.getText());
+        double lambda = Double.valueOf(a.getText());
+        double rho = Double.valueOf(b.getText());
 
 //        BetaDistribution weibullDistribution = new BetaDistribution(alpha, beta);    //k=5, beta=1
-        CauchyDistribution cauchyDistribution = new CauchyDistribution(alpha, beta);    //k=5, beta=1
-        double[] data = cauchyDistribution.sample(100_000);
+//        CauchyDistribution cauchyDistribution = new CauchyDistribution(alpha, beta);    //k=5, beta=1
+//        double[] data = cauchyDistribution.sample(100_000);
+
+
+        app.stat.WeibullDistribution dist = new app.stat.WeibullDistribution(lambda, rho);
+        WeibullCumulativeDistribution f_wei = new WeibullCumulativeDistribution(dist, -0.1, 2, 100000);
+
+        int n = 100_000;
+        double[] data = new double[n];
+        Random r = new Random();
+        for (int i = 0; i < n; i++) {
+            data[i] = f_wei.getX(r.nextDouble());
+        }
+
+
+
 
         double binWidth = 0.05;
         int binCount = 30;
